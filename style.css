@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Patrick Hand', cursive;
+}
+
+
+body {
+    background-color: rgba(52, 193, 193, 0.543);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todolist {
+    background-color: rgb(70, 68, 68);
+    padding: 15px 15px;
+    display: inline-block;
+    border-radius: 10px;
+    width: 25%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.todolist__task {
+    background-color: rgb(51, 181, 90);
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    justify-content: space-between;
+    border-radius: 10px;
+    display: flex;
+}
+
+.todolist__task-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.todolist__task:last-child {
+    margin-bottom: 0px;
+}
+
+.todolist__task-btns {
+    display: flex;
+    align-items: center;
+}
+
+.todolist__task-btn {
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.todolist__task-btn:hover {
+    opacity: 0.8;
+}
+.todolist__task-btn:last-child {
+    margin-right: 0px;
+}
+
+
+.todolist__task-btn--delete {
+    background-color: rgb(251, 84, 84);
+}
+
+.todolist__task-btn--update {
+    background-color: rgb(199, 156, 74);
+    font-size: 15px;
+}
+
