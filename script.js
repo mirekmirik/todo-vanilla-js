@@ -25,7 +25,7 @@ let user = [
     isMarked: true,
   },
   {
-    description: "Курение",
+    description: "Гулять",
     date: dateInYYYYMMDD,
     todoNum: 2,
     id: 1,
@@ -39,7 +39,7 @@ let user = [
     isMarked: false,
   },
   {
-    description: "Дрочка",
+    description: "Игра с котом",
     date: dateInYYYYMMDD,
     todoNum: 4,
     id: 3,
