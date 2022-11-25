@@ -5,14 +5,26 @@
     padding: 0;
     font-family: 'Patrick Hand', cursive;
     box-sizing: border-box;
+    color: black;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    outline: none;
 }
 
 
+.none {
+    display: none;
+}
+
 body {
     background-color: rgba(52, 193, 193, 0.543);
-    height: 100vh;
     width: 100vw;
-    padding: 15px 10px;
+    padding: 25px 10px;
+    overflow-x: hidden;
 }
 
 .todolist {
@@ -21,18 +33,38 @@ body {
     padding: 15px 15px;
     border-radius: 5px;
     width: 33%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
+
+.todolist__mark {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* .todolist__marked { */
+            /* background-color: rgb(70, 68, 68);
+            margin: 0 auto;
+            padding: 15px 15px;
+            border-radius: 5px;
+            width: 33%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+            /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+        
+/* } */
+
+
 
 .todolist__task {
     position: relative;
-    background-color: rgba(12, 255, 141);
+    background-color: rgba(12, 255, 141, 0.8);
     margin-bottom: 15px;
     padding: 10px 10px;
+    display: flex;
     justify-content: space-between;
     border-radius: 10px;
-    display: flex;
     opacity: 0;
+    height: 125px;
     animation: ani 0.5s forwards;
 }
 
@@ -40,6 +72,7 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+    font-size: 17px;
 }
 
 .todolist__task:last-child {
@@ -72,16 +105,17 @@ body {
 }
 
 .todolist__task-btn--update {
-    background-color: rgb(199, 156, 74);
+    background-color: rgb(233,213, 47, 0.9);
     font-size: 15px;
 }
 
 .todolist__task-todo-number {
     position: absolute;
-    /* display: flex; */
     right: 5%
+}
 
-    /* justify-content: flex-end; */
+.todolist__text--marked {
+    background-color: orange;
 }
 
 .form__todolist {
@@ -101,11 +135,12 @@ body {
     outline-width: 0.130px;
     box-shadow: rgba(12, 255, 141, 0.8) 0px 3px 3px;
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 18px;
+    width: 20%;
 }
 
 .form__todolist>p {
-    font-size: 36px;
+    font-size: 46px;
 }
 
 .form__todolist > button {
@@ -115,12 +150,42 @@ body {
     cursor: pointer;
     box-shadow: rgba(12, 255, 141, 0.8) 0px 3px 3px;
     background-color: rgb(123, 186, 186);
-    width: 5%;
+    width: 10%;
+    font-size: 16px;
 }
 
 .form__todolist>button:hover {
     opacity: 0.7;
 }
+
+
+.todolist__clear {
+    text-align: center;
+    font-size: 30px;
+}
+
+
+/* .todolist__marked {
+    text-align: center;
+    margin-bottom: 20px;
+} */
+
+
+.todolist__mark-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
+
+.todolist__mark-btn {
+    border: none;
+    padding: 5px 5px;
+    border-radius: 10px;
+    background-color: yellow;
+}
+
 
 @keyframes ani {
     0% {
