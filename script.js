@@ -18,32 +18,32 @@ const dateInYYYYMMDD = new Date().toISOString().slice(0, 10);
 
 let user = [
   {
-    description: "Обучение",
+    description: "Изучать английский",
     date: dateInYYYYMMDD,
     todoNum: 1,
     id: 0,
-    isMarked: true,
+    isDone: true,
   },
   {
-    description: "Гулять",
+    description: "Учиться",
     date: dateInYYYYMMDD,
     todoNum: 2,
     id: 1,
-    isMarked: true,
+    isDone: true,
   },
   {
-    description: "Отдых",
+    description: "Прогуляться",
     date: dateInYYYYMMDD,
     todoNum: 3,
     id: 2,
-    isMarked: false,
+    isDone: false,
   },
   {
-    description: "Игра с котом",
+    description: "Посмотреть фильм",
     date: dateInYYYYMMDD,
     todoNum: 4,
     id: 3,
-    isMarked: false,
+    isDone: false,
   },
 ];
 let id = 0;
@@ -53,7 +53,7 @@ let inMarkMenu = 0;
 
 let userFilterMark = user.filter((el, _, arr) => {
   allElements = arr.length;
-  return el.isMarked;
+  return el.isDone;
 });
 
 // todoList.insertAdjacentHTML('afterbegin','<p class="todolist__clear none">Todo list is clear!</p>')
@@ -85,21 +85,21 @@ const initializeAllTodos = function (
                             <div class="todolist__task-btns">
                                 <button class="todolist__task-btn todolist__task-btn--delete" type="button">X</button>
                                 <button class="todolist__task-btn todolist__task-btn--update" type="button">update</button>
-                                <button class="todolist__task-btn todolist__task-btn--mark" type="button">mark</button>
+                                <button class="todolist__task-btn todolist__task-btn--mark" type="button">complete</button>
   
                             </div>
                         </div>
                         `;
     par2.insertAdjacentHTML(par3, html);
     console.log(el);
-    if (el.isMarked) {
+    if (el.isDone) {
       console.log(document.querySelector(".todolist__task"));
       document.querySelector(".todolist__task").style.backgroundColor =
-        "orange";
+        "rgba(12, 255, 141, 0.8)";
       document.querySelector(
         ".todolist__task-btn--mark"
-      ).style.backgroundColor = "yellow";
-      document.querySelector(".todolist__task-btn--mark").textContent += "ed";
+      ).style.backgroundColor = "greenyellow";
+      document.querySelector(".todolist__task-btn--mark").textContent += "d";
     }
   });
 };
@@ -173,7 +173,7 @@ const addTask = function (event) {
     date: dateInYYYYMMDD,
     id: user.length,
     todoNum: user.length + 1,
-    isMarked: false,
+    isDone: false,
   };
   user.push(newTodo);
   console.log(user);
@@ -184,14 +184,12 @@ const addTask = function (event) {
     btnOpenMarkTodo.textContent = "You in Mark menu now";
     todoList.innerHTML = "";
     initializeAllTodos();
-    // todoList.style.display = "block";
     todoList.classList.remove("none");
   }
   btnOpenMarkTodo.textContent = "Mark Menu";
   todoList.innerHTML = "";
   initializeAllTodos();
   todoList.classList.remove("none");
-  // todoList.style.display = "block";
 };
 
 const markTask = function (event) {
@@ -209,47 +207,37 @@ const markTask = function (event) {
     .closest(".todolist__task")
     .querySelector(".todolist__task-btn--mark");
   let getTask = event.target.closest(".todolist__task");
-  if (findUser.isMarked) {
+  if (findUser.isDone) {
     console.log(getMarkBtn);
-    findUser.isMarked = false;
+    findUser.isDone = false;
     getMarkBtn.style.backgroundColor = "white";
-    getMarkBtn.textContent = "mark";
-    getTask.style.backgroundColor = "rgba(12, 255, 141, 0.8)";
+    getMarkBtn.textContent = "complete";
+    getTask.style.backgroundColor = "orange";
     console.log(user);
     return;
-    // todoList.innerHTML = "";
-    // initializeAllTodos();
-    // return;
   }
-  findUser.isMarked = true;
-  // todoList.innerHTML = "";
-  // initializeAllTodos();
-  getMarkBtn.style.backgroundColor = "yellow";
-  getMarkBtn.textContent = "marked";
-  getTask.style.backgroundColor = "orange";
+  findUser.isDone = true;
+  getMarkBtn.style.backgroundColor = "greenyellow";
+  getMarkBtn.textContent = "completed";
+  getTask.style.backgroundColor = "rgba(12, 255, 141, 0.8)";
 };
 
 const transactionToMarkTodos = function () {
   let userFilterMark = user.filter((el, _, arr) => {
     allElements = arr.length;
-    return el.isMarked;
+    return el.isDone;
   });
   todoList.innerHTML = "";
   inMarkMenu = inMarkMenu == 0 ? 1 : 0;
   if (inMarkMenu) {
-    btnOpenMarkTodo.textContent = "You in Mark todos now";
+    btnOpenMarkTodo.textContent = "You in Completed todos now";
     initializeAllTodos(userFilterMark, todoList, "afterbegin");
   } else {
-    btnOpenMarkTodo.textContent = "Mark todos";
+    btnOpenMarkTodo.textContent = "Completed todos";
     todoList.innerHTML = "";
     console.log(user);
     console.log("ss");
     initializeAllTodos();
-    // if(user.length == 0) {
-    // return todoList.style.display= "none"
-    //   todoList.classList.add('none')
-    // }
-    // todoList.style.display = "block"
   }
 };
 
